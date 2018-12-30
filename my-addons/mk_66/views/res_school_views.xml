@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="res_school_form_view" model="ir.ui.view">
+            <field name="name">res.school.form.view</field>
+            <field name="model">res.school</field>
+            <field name="arch" type="xml">
+                <form string="Schools">
+                    <header>
+                    </header>
+                    <sheet string="Schools">
+                        <div class="oe_button_box" name="button_box">
+                        </div>
+                        <div class="oe_title">
+                            <div class="oe_title">
+                                <h1>
+                                    <field name="name" placeholder="Name"/>
+                                    <br/>
+                                </h1>
+                            </div>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="type"/>
+                            </group>
+                            <group>
+                                <field name="street"/>
+                                <field name="street2"/>
+                                <field name="city_id"/>
+                                <field name="state_id"/>
+                                <field name="country_id"/>
+                                <field name="zip"/>
+                            </group>
+                        </group>
+                        <notebook string="Attendance">
+                            <page string="Attended" attrs="{'invisible': [('type', '=', 'school')]}">
+                                <field name="college_partner_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="nick_name"/>
+                                        <field name="company_id"/>
+                                        <field name="city_id"/>
+                                        <field name="country_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Attended" attrs="{'invisible': [('type', '=', 'uni')]}">
+                                <field name="hs_partner_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="nick_name"/>
+                                        <field name="company_id"/>
+                                        <field name="city_id"/>
+                                        <field name="country_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="res_school_tree_view" model="ir.ui.view">
+            <field name="name">res.school.tree.view</field>
+            <field name="model">res.school</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="city_id"/>
+                    <field name="state_id"/>
+                    <field name="country_id"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>
